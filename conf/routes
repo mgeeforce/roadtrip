@@ -3,7 +3,32 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+#GET     /                           controllers.Assets.at(path="/public", file="index.html")
+GET		/							controllers.Application.index()
+GET		/message					controllers.Application.testMessage()
+
+POST    /login                      controllers.SecurityController.login()
+POST    /logout                     controllers.SecurityController.logout()
+
+GET     /reports                    controllers.ReportController.getAll()
+POST    /reports                    controllers.ReportController.create()
+GET		/reports/:id				controllers.ReportController.findById(id: Long)
+PUT		/reports/:id				controllers.ReportController.update(id: Long)
+DELETE	/reports/:id				controllers.ReportController.delete(id: Long)
+
+GET     /expenses                   controllers.ExpenseController.getAll()
+POST    /expenses                   controllers.ExpenseController.create()
+GET		/expenses/:id				controllers.ExpenseController.findById(id: Long)
+PUT		/expenses/:id				controllers.ExpenseController.update(id: Long)
+DELETE	/expenses/:id				controllers.ExpenseController.delete(id: Long)
+
+GET     /receipts                   controllers.ReceiptController.getAll()
+POST    /receipts                   controllers.ReceiptController.create()
+GET		/receipts/:id				controllers.ReceiptController.findById(id: Long)
+PUT		/receipts/:id				controllers.ReceiptController.update(id: Long)
+DELETE	/receipts/:id				controllers.ReceiptController.delete(id: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /webjars/*file 				controllers.WebJarAssets.at(file)
